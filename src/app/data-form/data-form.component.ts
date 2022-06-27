@@ -30,6 +30,8 @@ export class DataFormComponent implements OnInit {
 
   addNewItem = () => {
     var res = { id: this.itemId, name: this.itemName, price: this.itemPrice };
+
+    
     if (localStorage.getItem('data') === "[]") {
       res.id = 1;
       localStorage.setItem('data', JSON.stringify([res]));

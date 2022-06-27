@@ -24,17 +24,17 @@ export class ItemsService {
   //   localStorage.setItem('data', this.itemData);
   // }
 
-  deleteItem(val: any) {
-    var updatedData = [...this.itemData];
+  // deleteItem(val: any) {
+  //   var updatedData = [...this.itemData];
 
-    for (var i = 0; i < this.itemData.length; i++) {
-      if (updatedData[i].id === val.id) {
-        updatedData.splice(i, 1);
-        this.itemData = updatedData;
-        break;
-      }
-    }
-    localStorage.setItem('data', JSON.stringify(updatedData));
-    return updatedData;
-  }
+  //   for (var i = 0; i < this.itemData.length; i++) {
+  //     if (updatedData[i].id === val.id) {
+  //       updatedData.splice(i, 1);
+  //       this.itemData = updatedData;
+  //       break;
+  //     }
+  //   }
+  //   localStorage.setItem('data', JSON.stringify(updatedData));
+  //   return updatedData;
+  // }
 }

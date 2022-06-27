@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { ItemsService } from '../items.service';
 
 export interface ItemList {
   id: number,
@@ -21,17 +20,9 @@ export class MainComponent implements OnInit {
   
   dataSource = JSON.parse(localStorage.getItem('data') || "");
 
-  constructor(private itemsService: ItemsService) { }
+  constructor() { }
 
-  ngOnInit(): void {
-    this.getItems();
-  }
-
-  getItems(): void {
-    this.itemsService.getItems()
-        .subscribe(items => this.displayData = items);
-    // this.displayData = this.itemsService.getItems();
-  }
+  ngOnInit(): void { }
 
   handleDelete(val: any) {
     var updatedData = [...this.dataSource];
@@ -45,9 +36,6 @@ export class MainComponent implements OnInit {
     }
     localStorage.setItem('data', JSON.stringify(updatedData));
   }
-  // handleDelete(val: any) {
-  //   this.itemsService.deleteItem(val);
-  // }
 
   handleEdit(val: any) {
     localStorage.setItem('editItemData', JSON.stringify(val));
