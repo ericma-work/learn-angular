@@ -1,0 +1,29 @@
+<mat-form-field class="full-width">
+  <mat-label>Name</mat-label>
+  <input matInput 
+        #inputFoodName
+        (input)="onInputFoodName(inputFoodName.value)"
+        [value]="itemName">
+</mat-form-field>
+<mat-form-field class="full-width">
+  <mat-label>Price</mat-label>
+  <input type="number" 
+        matInput 
+        #inputFoodPrice
+        (input)="onInputFoodPrice(inputFoodPrice.value)"
+        [value]="itemPrice">
+</mat-form-field>
+<button mat-raised-button 
+        routerLink=""
+        color="primary"
+        (click)="addNewItem()"
+        >
+  Submit
+</button>
+<button mat-raised-button 
+        routerLink=""
+        color="warn"
+        (click)="handleBackToMain()"
+        >
+  Cancel
+</button>
