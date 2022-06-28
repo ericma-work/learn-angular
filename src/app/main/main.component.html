@@ -1,4 +1,4 @@
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8 full-width">
+<table mat-table [dataSource]="displayData" class="mat-elevation-z8 full-width">
   <ng-container matColumnDef="id">
     <th mat-header-cell *matHeaderCellDef> ID</th>
     <td mat-cell *matCellDef="let element"> {{element.id}} </td>
@@ -20,7 +20,7 @@
     <td mat-cell *matCellDef="let element">
       <button mat-flat-button 
               routerLink="/create-edit"
-              (click)="handleEdit(element)"
+              [queryParams]="{id: element.id, name: element.name, price: element.price}"
               color="primary">
         Edit
       </button>

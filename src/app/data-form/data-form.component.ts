@@ -1,4 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { ItemsService } from '../items.service';
 
 @Component({
   selector: 'app-data-form',
@@ -9,15 +11,18 @@ export class DataFormComponent implements OnInit {
   itemId = 0; 
   itemName = "";
   itemPrice = 0
-  constructor() { }
+
+  constructor(private route: ActivatedRoute, private itemService: ItemsService) {
+
+  }
 
   ngOnInit(): void { 
-    if (localStorage.getItem('editItemData') !== null) {
-      var selectedValue = JSON.parse(localStorage.getItem('editItemData') || "");
-      this.itemId = selectedValue.id;
-      this.itemName = selectedValue.name,
-      this.itemPrice = selectedValue.price;
-    }
+    this.route.queryParams
+        .subscribe(params => {
+          this.itemId = params['id'];
+          this.itemName = params['name'];
+          this.itemPrice = params['price'];
+        })
   }
 
   onInputFoodName = (val: string) => {
@@ -30,7 +35,6 @@ export class DataFormComponent implements OnInit {
 
   addNewItem = () => {
     var res = { id: this.itemId, name: this.itemName, price: this.itemPrice };
-
     
     if (localStorage.getItem('data') === "[]") {
       res.id = 1;
@@ -52,5 +56,10 @@ export class DataFormComponent implements OnInit {
 
   handleBackToMain() {
     localStorage.removeItem('editItemData');
+  }
+
+  addItem() {
+    var res = { id: this.itemId, name: this.itemName, price: this.itemPrice };
+    this.itemService.addItem(res)
   }
 }
