@@ -35,7 +35,7 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
-<h1 *ngIf='dataSource.length === 0'>There are currently no data in the database</h1>
+<h1 *ngIf='displayData.length === 0'>There are currently no data in the database</h1>
 <br />
 <a routerLink="/create-edit" 
     ariaCurrentWhenActive="page" 

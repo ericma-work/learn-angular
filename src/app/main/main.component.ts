@@ -19,25 +19,14 @@ export class MainComponent implements OnInit {
 
   displayData: ItemList[] = [];
   
-  dataSource = JSON.parse(localStorage.getItem('data') || "");
+  // dataSource = JSON.parse(localStorage.getItem('data') || "");
+  dataSource = []
 
   constructor(private itemService: ItemsService) { }
 
   ngOnInit(): void { 
     this.getItems();
   }
-  // handleDelete(val: any) {
-  //   var updatedData = [...this.dataSource];
-
-  //   for (var i = 0; i < this.dataSource.length; i++) {
-  //     if (updatedData[i].id === val.id) {
-  //       updatedData.splice(i, 1);
-  //       this.dataSource = updatedData;
-  //       break;
-  //     }
-  //   }
-  //   localStorage.setItem('data', JSON.stringify(updatedData));
-  // }
 
   getItems(): void {
     this.itemService.getItems()
@@ -48,9 +37,14 @@ export class MainComponent implements OnInit {
     localStorage.setItem('editItemData', JSON.stringify(val));
   }
 
-  handleDelete(val:any) {
-    this.itemService.deleteItem(val);
+  handleDelete(val:any): void {
+    this.itemService.deleteItem(val)
+        .subscribe(items => {
+          this.displayData = items
+        });
   }
 
-
+  // handleDelete(val:any): void {
+  //   this.itemService.deleteItem(val);
+  // }
 }

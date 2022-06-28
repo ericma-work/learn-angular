@@ -33,12 +33,25 @@ export class ItemsService {
   }
 
   addItem(val: any) {
-    this.itemData.push(val);
+    var inputData = val;    
+    if (this.itemData === []) {
+      inputData.id = 1;
+      this.itemData.push(inputData);
+    } else {
+      var findIndex = this.itemData.findIndex(((obj: any) => obj.id == inputData.id));
+      if (findIndex < 0) { // create new item
+        var itemId = this.itemData[this.itemData.length - 1].id + 1;
+        inputData.id = itemId
+        this.itemData.push(inputData);
+      } else { // edit item because item exist
+        this.itemData[findIndex] = inputData;
+      }
+    }
+    console.log("TESTTT", this.itemData);
   }
 
-  deleteItem(val: any) {
+  deleteItem(val: any): Observable<ItemList[]> {
     var updatedData = [...this.itemData];
-    console.log("BEFORE:", this.itemData);
     for (var i = 0; i < this.itemData.length; i++) {
       if (updatedData[i].id === val.id) {
         updatedData.splice(i, 1);
@@ -46,7 +59,19 @@ export class ItemsService {
         break;
       }
     }
-    console.log("AFTER: ", this.itemData);
-
+    const items = of(this.itemData);
+    return items;
   }
+
+  
+  // deleteItem(val: any) {
+  //   var updatedData = [...this.itemData];
+  //   for (var i = 0; i < this.itemData.length; i++) {
+  //     if (updatedData[i].id === val.id) {
+  //       updatedData.splice(i, 1);
+  //       this.itemData = updatedData;
+  //       break;
+  //     }
+  //   }
+  // }
 }
