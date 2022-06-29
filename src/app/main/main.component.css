@@ -5,3 +5,15 @@
 .mat-header-cell {
     font-weight: bold;
 }
+
+.pipeTableContainer { 
+    border-collapse: collapse;
+    width: 50%;
+    margin: 0 auto;
+}
+
+.pipeTableContainer th, .pipeTableContainer td {
+    text-align: center;
+    padding: 0.5rem 1rem;
+    border: solid 0.5px black;
+}

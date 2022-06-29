@@ -19,32 +19,29 @@ export class MainComponent implements OnInit {
 
   displayData: ItemList[] = [];
   
-  // dataSource = JSON.parse(localStorage.getItem('data') || "");
   dataSource = []
 
   constructor(private itemService: ItemsService) { }
 
   ngOnInit(): void { 
     this.getItems();
-  }
 
+    this.itemService.dataEmitter.subscribe((value) => {
+      this.displayData = value;
+    })
+  }
+  
   getItems(): void {
-    this.itemService.getItems()
-        .subscribe(items => this.displayData = items);
-  }
-
-  handleEdit(val: any) {
-    localStorage.setItem('editItemData', JSON.stringify(val));
+    // const myObservable = this.itemService.getItems();
+    // myObservable.subscribe({
+    //   next: items => this.displayData = items,
+    //   error: err => console.error('Observer got an error: ' + err),
+    //   complete: () => console.log("complete")
+    // })
+    this.displayData = this.itemService.getAllItems();
   }
 
   handleDelete(val:any): void {
-    this.itemService.deleteItem(val)
-        .subscribe(items => {
-          this.displayData = items
-        });
+    this.displayData = this.itemService.deleteItem(val);
   }
-
-  // handleDelete(val:any): void {
-  //   this.itemService.deleteItem(val);
-  // }
 }

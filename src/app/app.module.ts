@@ -17,13 +17,15 @@ import { MainComponent } from './main/main.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 import { ItemsService } from './items.service';
+import { HasValuePipe } from './hasvalue.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     DataFormComponent,
     MainComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    HasValuePipe
   ],
   imports: [
     BrowserModule,

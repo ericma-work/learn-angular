@@ -1,4 +1,4 @@
-<table mat-table [dataSource]="displayData" class="mat-elevation-z8 full-width">
+<table *ngIf='displayData.length !== 0;else no_data' mat-table [dataSource]="displayData" class="mat-elevation-z8 full-width">
   <ng-container matColumnDef="id">
     <th mat-header-cell *matHeaderCellDef> ID</th>
     <td mat-cell *matCellDef="let element"> {{element.id}} </td>
@@ -35,7 +35,9 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
-<h1 *ngIf='displayData.length === 0'>There are currently no data in the database</h1>
+<ng-template #no_data>
+  <h1  >There are currently no data in the database</h1>
+</ng-template>
 <br />
 <a routerLink="/create-edit" 
     ariaCurrentWhenActive="page" 
@@ -43,3 +45,44 @@
     >
   Add Item
 </a>
+
+<h1 class="center">hasValue Pipe Demo</h1>
+<table class="pipeTableContainer">
+  <tr>
+    <th>Input</th>
+    <th>Has Value?</th>
+  </tr>
+  <tr>
+    <td>[1, 2, 3, 4]</td>
+    <td>{{ [1, 2, 3, 4] | hasValue}}</td>
+  </tr>
+  <tr>
+    <td>[]</td>
+    <td>{{ [] | hasValue }}</td>
+  </tr>
+  <tr>
+    <td>&#123;&#125;</td>
+    <td>{{ {} | hasValue }}</td>
+  </tr>
+  <tr>
+    <td>&#123; name: 'Rakuten', domain: 'rcp' &#125;</td>
+    <td>{{ {name: 'Rakuten', doman: 'rcp'} | hasValue }}</td>
+  </tr>
+  <tr>
+    <td>"undefined"</td>
+    <td>{{ "undefined" | hasValue }}</td>
+  </tr>
+  <tr>
+    <td>""</td>
+    <td>{{ "" | hasValue}}</td>
+  </tr>
+  <tr>
+    <td>undefined</td>
+    <td>{{ undefined | hasValue }}</td>
+  </tr>
+  <tr>
+    <td>null</td>
+    <td>{{ null | hasValue }}</td>
+  </tr>
+
+</table>

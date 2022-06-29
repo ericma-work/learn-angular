@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, of, Subject } from 'rxjs';
 
 export interface ItemList {
   id: number,
@@ -8,37 +8,30 @@ export interface ItemList {
 }
 
 const ITEM_DATA: ItemList[] = [
-  { id: 1, name: 'chicken', price: 150},
-  { id: 2, name: 'turkey', price: 320 },
-  { id: 3, name: 'roast beef', price: 520 }
+
 ]
 
 @Injectable({
   providedIn: 'root'
 })
 export class ItemsService {
+  itemData: ItemList[] = [];
+  dataEmitter = new Subject<ItemList[]>();
 
-
-  // private itemData = JSON.parse(localStorage.getItem('data') || "");
-  private itemData: ItemList[] = [
-    { id: 1, name: 'chicken', price: 150},
-    { id: 2, name: 'turkey', price: 310 },
-    { id: 3, name: 'roast beef', price: 520 }
-  ];
   constructor() { }
 
-  getItems(): Observable<ItemList[]> {
-    const items = of(this.itemData);
-    return items
+  getAllItems() {
+    return this.itemData;
   }
 
   addItem(val: any) {
-    var inputData = val;    
-    if (this.itemData === []) {
+    var inputData = {...val};    
+    if (this.itemData.length === 0) {
       inputData.id = 1;
       this.itemData.push(inputData);
     } else {
       var findIndex = this.itemData.findIndex(((obj: any) => obj.id == inputData.id));
+
       if (findIndex < 0) { // create new item
         var itemId = this.itemData[this.itemData.length - 1].id + 1;
         inputData.id = itemId
@@ -47,31 +40,23 @@ export class ItemsService {
         this.itemData[findIndex] = inputData;
       }
     }
-    console.log("TESTTT", this.itemData);
+    this.dataEmitter.next(this.itemData);
   }
 
-  deleteItem(val: any): Observable<ItemList[]> {
+  deleteItem(val: any): ItemList[] {
+    // make a copy of the data storage
     var updatedData = [...this.itemData];
-    for (var i = 0; i < this.itemData.length; i++) {
-      if (updatedData[i].id === val.id) {
-        updatedData.splice(i, 1);
-        this.itemData = updatedData;
-        break;
-      }
-    }
-    const items = of(this.itemData);
-    return items;
-  }
 
-  
-  // deleteItem(val: any) {
-  //   var updatedData = [...this.itemData];
-  //   for (var i = 0; i < this.itemData.length; i++) {
-  //     if (updatedData[i].id === val.id) {
-  //       updatedData.splice(i, 1);
-  //       this.itemData = updatedData;
-  //       break;
-  //     }
-  //   }
-  // }
+    // find the location of the deleted value in the data storage array
+    var findIndex = updatedData.findIndex(((obj: any) => obj.id == val.id));
+
+    // delete the value
+    updatedData.splice(findIndex, 1);
+
+    // update the data storage;
+    this.itemData = updatedData;
+
+    // return updated data to the view
+    return this.itemData;
+  }
 }
