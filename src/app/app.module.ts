@@ -28,7 +28,6 @@ import { ShareDataComponent } from './share-data/share-data.component';
 import { ShareDataChildComponent } from './share-data-child/share-data-child.component';
 import { ShareDataChild2Component } from './share-data-child2/share-data-child2.component';
 import { CalculatorComponent } from './calculator/calculator.component';
-import { CalcDisplayComponent } from './calc-display/calc-display.component';
 import { CalcButtonComponent } from './calc-button/calc-button.component';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { CalculatorServiceService } from './calculator-service.service';
@@ -56,7 +55,6 @@ import {MatDialogModule} from '@angular/material/dialog';
     ShareDataChildComponent,
     ShareDataChild2Component,
     CalculatorComponent,
-    CalcDisplayComponent,
     CalcButtonComponent,
     TodoListComponent,
     TodoListChildComponent
