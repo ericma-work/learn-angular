@@ -1,0 +1,13 @@
+<div class="buttonContainer">
+    <mat-grid-list cols="4" rowHeight="3:1" gutterSize="10px">
+        <mat-grid-tile class="buttons" 
+                        *ngFor="let buttonVal of buttons">
+            <button mat-raised-button 
+                    (click)="handleClickButton(buttonVal)"
+                    [disabled]="buttonVal.value === '.' ? true : false"
+                    [color]="buttonVal.operator ? 'accent' : 'primary'">
+                {{ buttonVal.value }}
+            </button>
+        </mat-grid-tile>
+    </mat-grid-list> 
+</div>

@@ -1,0 +1,7 @@
+.firstDemo, .secondDemo{
+    text-align:left;
+}
+
+.secondDemo button {
+    margin: 0.25rem 0;
+}

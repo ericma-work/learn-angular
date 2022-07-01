@@ -32,12 +32,6 @@ export class MainComponent implements OnInit {
   }
   
   getItems(): void {
-    // const myObservable = this.itemService.getItems();
-    // myObservable.subscribe({
-    //   next: items => this.displayData = items,
-    //   error: err => console.error('Observer got an error: ' + err),
-    //   complete: () => console.log("complete")
-    // })
     this.displayData = this.itemService.getAllItems();
   }
 

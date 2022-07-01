@@ -1,0 +1,9 @@
+<div class="body">
+    <div class="calc-display">
+        <h3 class="right no-margin">{{displayValueSmall}}</h3>
+        <h1 class="right no-margin">{{displayValue}}</h1>
+    </div>
+
+    <app-calc-button (dataEmitter)="buttonClicked($event)"
+                        [buttons]="buttonData"></app-calc-button>
+</div>

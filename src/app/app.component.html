@@ -1,7 +1,44 @@
-<div container>
-  <!-- <mat-toolbar color="primary">
-    <h1 class="center">{{ pageHeader() }}</h1>
-  </mat-toolbar> -->
+<div>
+  <mat-toolbar color="primary">
+      <button mat-icon-button
+              routerLink="">
+        <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>
+      </button>
+      <button mat-flat-button 
+              routerLink="pipe-demo"
+              color="primary">
+        Pipes
+      </button>
+      <button mat-flat-button 
+              routerLink="content-projection"
+              color="primary">
+        Content Projection
+      </button>
+      <button mat-flat-button 
+              routerLink="ng-template-outlet"
+              color="primary">
+        NgTemplate Outlet
+      </button>
+      <button mat-flat-button 
+            routerLink="share-data-demo"
+            color="primary">
+        Data Sharing Demo
+      </button>
+      <button mat-flat-button 
+              routerLink="calculator"
+              color="primary">
+          Calculator
+      </button>
+      <!-- <button mat-flat-button 
+            routerLink="todo-list"
+            color="primary">
+        To-Do List
+      </button> -->
+      <!-- <button mat-flat-button 
+              routerLink="calendar"
+              color="primary">
+        Calendar
+      </button> -->
+  </mat-toolbar>
   <router-outlet></router-outlet>
-    
 </div>

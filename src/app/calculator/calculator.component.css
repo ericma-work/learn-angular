@@ -1,0 +1,19 @@
+.body {
+    margin: 0.5rem auto;
+    width: 70%;
+
+}
+
+.calc-display {
+    border: black solid 2px;
+    padding: 0.5rem;
+    margin: 0.5rem;
+}
+
+.right {
+    text-align: right;
+}
+
+.no-margin {
+    margin: 0;
+}

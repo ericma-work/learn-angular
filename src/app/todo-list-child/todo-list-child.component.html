@@ -1,0 +1,20 @@
+<h1 mat-dialog-title>New Task </h1>
+<mat-form-field class="full-width">
+    <mat-label>Title</mat-label>
+    <input matInput 
+          #title
+          (input)="onTitleChange(title.value)"
+          [value]="noteTitle">
+</mat-form-field>
+<mat-form-field class="full-width">
+    <mat-label>Detail</mat-label>
+    <input matInput 
+          #detail
+          (input)="onDetailChange(detail.value)"
+          [value]="noteDetail">
+</mat-form-field>
+<button mat-raised-button 
+        (click)="addNew()"
+        color="primary">
+    ADD 
+</button>

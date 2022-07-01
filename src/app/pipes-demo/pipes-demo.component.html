@@ -1,0 +1,11 @@
+<h1 class="center">hasValue Pipe Demo</h1>
+<table class="pipeTableContainer">
+  <tr>
+    <th>Input</th>
+    <th>Has Value?</th>
+  </tr>
+  <tr *ngFor="let data of data">
+    <td>{{ data.input }}</td>
+    <td [style]="'background-color:' + data.color">{{ data.output }}</td>
+  </tr>
+</table>

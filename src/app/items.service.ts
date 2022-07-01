@@ -25,11 +25,13 @@ export class ItemsService {
   }
 
   addItem(val: any) {
-    var inputData = {...val};    
-    if (this.itemData.length === 0) {
-      inputData.id = 1;
+    // make a copy of the input
+    var inputData = {...val}; 
+    
+    if (this.itemData.length === 0) { // data storage is empty
+      inputData.id = 1; // set id to 1
       this.itemData.push(inputData);
-    } else {
+    } else { 
       var findIndex = this.itemData.findIndex(((obj: any) => obj.id == inputData.id));
 
       if (findIndex < 0) { // create new item

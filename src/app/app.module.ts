@@ -17,7 +17,28 @@ import { MainComponent } from './main/main.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 import { ItemsService } from './items.service';
-import { HasValuePipe } from './hasvalue.pipe';
+import { HasValuePipe } from './pipes/hasvalue.pipe';
+import { PipesDemoComponent } from './pipes-demo/pipes-demo.component';
+import { ContentProjectionComponent } from './content-projection/content-projection.component';
+import { ContentProjectionChidComponent } from './content-projection-chid/content-projection-chid.component';
+import { NgTemplateOutletComponent } from './ng-template-outlet/ng-template-outlet.component';
+import { CalendarMainComponent } from './calendar/calendar-main/calendar-main.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { ShareDataComponent } from './share-data/share-data.component';
+import { ShareDataChildComponent } from './share-data-child/share-data-child.component';
+import { ShareDataChild2Component } from './share-data-child2/share-data-child2.component';
+import { CalculatorComponent } from './calculator/calculator.component';
+import { CalcDisplayComponent } from './calc-display/calc-display.component';
+import { CalcButtonComponent } from './calc-button/calc-button.component';
+import {MatGridListModule} from '@angular/material/grid-list';
+import { CalculatorServiceService } from './calculator-service.service';
+import { TodoListComponent } from './todo-list/todo-list.component';
+import { TodoListChildComponent } from './todo-list-child/todo-list-child.component';
+import {MatCardModule} from '@angular/material/card';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatDialogModule} from '@angular/material/dialog';
+
+
 
 @NgModule({
   declarations: [
@@ -25,7 +46,20 @@ import { HasValuePipe } from './hasvalue.pipe';
     DataFormComponent,
     MainComponent,
     PageNotFoundComponent,
-    HasValuePipe
+    HasValuePipe,
+    PipesDemoComponent,
+    ContentProjectionComponent,
+    ContentProjectionChidComponent,
+    NgTemplateOutletComponent,
+    CalendarMainComponent,
+    ShareDataComponent,
+    ShareDataChildComponent,
+    ShareDataChild2Component,
+    CalculatorComponent,
+    CalcDisplayComponent,
+    CalcButtonComponent,
+    TodoListComponent,
+    TodoListChildComponent
   ],
   imports: [
     BrowserModule,
@@ -36,11 +70,17 @@ import { HasValuePipe } from './hasvalue.pipe';
     MatIconModule,
     MatFormFieldModule,
     MatInputModule,
-    AppRoutingModule
-    
+    AppRoutingModule,
+    MatDatepickerModule,    
+    MatGridListModule,
+    MatCardModule,
+    MatDividerModule,
+    MatDialogModule
   ],
   providers: [
-    ItemsService
+    ItemsService,
+    CalculatorServiceService,
+    HasValuePipe
   ],
   bootstrap: [AppComponent]
 })
